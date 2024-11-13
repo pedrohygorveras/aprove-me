@@ -1,0 +1,89 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(uuid())
+  login        String   @unique
+  password     String
+  role         String
+  refreshToken String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@map("users")
+}
+
+model Assignor {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  phone     String
+  document  String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  payables Payable[]
+
+  @@map("assignors")
+}
+
+model Payable {
+  id           String   @id @default(uuid())
+  assignorId   String
+  value        Float
+  emissionDate DateTime
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  assignor        Assignor         @relation(fields: [assignorId], references: [id], onDelete: Cascade)
+  batchItems      BatchItem[]
+  deadLetterQueue DeadLetterQueue?
+
+  @@map("payables")
+}
+
+model Batch {
+  id           String   @id @default(uuid())
+  status       String
+  totalSuccess Int      @default(0)
+  totalFailed  Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  batchItems BatchItem[]
+
+  @@map("batchs")
+}
+
+model BatchItem {
+  id         String   @id @default(uuid())
+  batchId    String
+  payableId  String
+  status     String
+  retryCount Int      @default(0)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  batch   Batch   @relation(fields: [batchId], references: [id], onDelete: Cascade)
+  payable Payable @relation(fields: [payableId], references: [id], onDelete: Cascade)
+
+  @@map("batch_itens")
+}
+
+model DeadLetterQueue {
+  id           String   @id @default(uuid())
+  payableId    String   @unique
+  errorMessage String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  payable Payable @relation(fields: [payableId], references: [id], onDelete: Cascade)
+
+  @@map("dead_letter_queues")
+}
