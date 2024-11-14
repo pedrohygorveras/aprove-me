@@ -41,7 +41,13 @@ export class AuthController {
     description: 'User logged in successfully',
     schema: {
       example: {
-        access_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
+        accessToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
+        refreshToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
+        user: {
+          name: 'John Doe',
+          email: 'john.doe@example.com',
+          role: 'Admin',
+        },
       },
     },
   })
@@ -78,7 +84,12 @@ export class AuthController {
     description: 'New access token generated successfully',
     schema: {
       example: {
-        access_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
+        accessToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
+        user: {
+          name: 'John Doe',
+          email: 'john.doe@example.com',
+          role: 'Admin',
+        },
       },
     },
   })

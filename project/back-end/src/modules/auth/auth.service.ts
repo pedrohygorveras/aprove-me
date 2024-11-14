@@ -40,8 +40,13 @@ export class AuthService {
     await this.usersService.saveRefreshToken(user.id, refreshToken);
 
     return {
-      access_token: accessToken,
-      refresh_token: refreshToken,
+      accessToken: accessToken,
+      refreshToken: refreshToken,
+      user: {
+        name: user.name,
+        email: user.email,
+        role: user.role,
+      },
     };
   }
 
@@ -65,7 +70,14 @@ export class AuthService {
         { expiresIn: this.accessTokenExpiration },
       );
 
-      return { access_token: newAccessToken };
+      return {
+        accessToken: newAccessToken,
+        user: {
+          name: user.name,
+          email: user.email,
+          role: user.role,
+        },
+      };
     } catch {
       throw new UnauthorizedException('Invalid refresh token');
     }
