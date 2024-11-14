@@ -1,0 +1,11 @@
+version: '3'
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: aprovame
+      RABBITMQ_DEFAULT_PASS: aprovame
+    ports:
+      - '5672:5672'
+      - '15672:15672'
