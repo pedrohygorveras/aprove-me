@@ -4,10 +4,19 @@ import {
   IsNumber,
   IsDateString,
   Min,
+  IsOptional,
 } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreatePayableDto {
+  @ApiProperty({
+    description: 'UUID of the payable',
+    example: '123e4567-e89b-12d3-a456-426614174000',
+  })
+  @IsUUID('4')
+  @IsOptional()
+  id: string;
+
   @ApiProperty({
     description: 'UUID of the assignor',
     example: '123e4567-e89b-12d3-a456-426614174000',

@@ -1,7 +1,22 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, IsNotEmpty, IsInt, Min } from 'class-validator';
+import {
+  IsString,
+  IsNotEmpty,
+  IsInt,
+  Min,
+  IsUUID,
+  IsOptional,
+} from 'class-validator';
 
 export class CreateBatchDto {
+  @ApiProperty({
+    description: 'UUID of the batch',
+    example: '123e4567-e89b-12d3-a456-426614174000',
+  })
+  @IsUUID('4')
+  @IsOptional()
+  id: string;
+
   @ApiProperty({
     description: 'Status of the batch',
     example: 'pending',
