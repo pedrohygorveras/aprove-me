@@ -26,6 +26,7 @@ import {
 } from '@nestjs/swagger';
 import { UserEntity } from './entities/user.entity';
 import { LoginDto } from './dto/login.dto';
+import { PartialUserEntity } from './entities/partial-user.entity';
 
 @ApiTags('Users')
 @ApiExtraModels(LoginDto, CreateUserDto, UpdateUserDto, UserEntity)
@@ -90,7 +91,9 @@ export class UsersController {
         data: [
           {
             id: '1',
+            name: 'User Name',
             login: 'user1',
+            email: 'user1@example.com',
             role: 'Admin',
             createdAt: '2024-01-01T00:00:00Z',
             updatedAt: '2024-01-01T00:00:00Z',
@@ -122,7 +125,7 @@ export class UsersController {
   @ApiResponse({
     status: 200,
     description: 'User found and retrieved successfully',
-    type: UserEntity,
+    type: PartialUserEntity,
   })
   @ApiResponse({ status: 404, description: 'User not found' })
   findOne(@Param('id') id: string) {
