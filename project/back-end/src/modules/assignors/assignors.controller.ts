@@ -22,10 +22,12 @@ import {
   ApiResponse,
   ApiParam,
   ApiQuery,
+  ApiExtraModels,
 } from '@nestjs/swagger';
 import { AssignorEntity } from './entities/assignor.entity';
 
 @ApiTags('Assignors')
+@ApiExtraModels(CreateAssignorDto, UpdateAssignorDto, AssignorEntity)
 @ApiBearerAuth()
 @Controller('assignors')
 @UseGuards(JwtAuthGuard, RolesGuard)

@@ -22,10 +22,13 @@ import {
   ApiResponse,
   ApiParam,
   ApiQuery,
+  ApiExtraModels,
 } from '@nestjs/swagger';
 import { UserEntity } from './entities/user.entity';
+import { LoginDto } from './dto/login.dto';
 
 @ApiTags('Users')
+@ApiExtraModels(LoginDto, CreateUserDto, UpdateUserDto, UserEntity)
 @ApiBearerAuth()
 @Controller('users')
 @UseGuards(JwtAuthGuard, RolesGuard)

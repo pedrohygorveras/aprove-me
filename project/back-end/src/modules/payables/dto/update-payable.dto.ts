@@ -5,46 +5,35 @@ import {
   IsDateString,
   Min,
 } from 'class-validator';
-import {
-  PAYABLE_ASSIGNOR_ID_INVALID,
-  PAYABLE_VALUE_INVALID,
-  PAYABLE_EMISSION_DATE_INVALID,
-} from '../../common/constants/payables/validation-messages';
+import { ApiProperty } from '@nestjs/swagger';
 
 export class UpdatePayableDto {
-  /**
-   * assignorId
-   */
-  @IsUUID('4', {
-    message: PAYABLE_ASSIGNOR_ID_INVALID,
+  @ApiProperty({
+    description: 'UUID of the assignor',
+    example: '123e4567-e89b-12d3-a456-426614174000',
+    required: false,
   })
+  @IsUUID('4')
   @IsOptional()
   assignorId?: string;
 
-  /**
-   * value
-   */
-  @IsNumber(
-    {},
-    {
-      message: PAYABLE_VALUE_INVALID,
-    },
-  )
-  @IsOptional()
-  @Min(0, {
-    message: 'The value must be greater than or equal to 0.',
+  @ApiProperty({
+    description: 'Value of the payable',
+    example: 1000.0,
+    minimum: 0,
+    required: false,
   })
+  @IsNumber()
+  @IsOptional()
+  @Min(0)
   value?: number;
 
-  /**
-   * emissionDate
-   */
-  @IsDateString(
-    {},
-    {
-      message: PAYABLE_EMISSION_DATE_INVALID,
-    },
-  )
+  @ApiProperty({
+    description: 'Emission date of the payable',
+    example: '2024-01-01T00:00:00Z',
+    required: false,
+  })
+  @IsDateString()
   @IsOptional()
-  emissionDate?: string;
+  emissionDate?: Date;
 }

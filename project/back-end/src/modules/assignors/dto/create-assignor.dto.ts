@@ -5,83 +5,47 @@ import {
   MinLength,
   MaxLength,
 } from 'class-validator';
-import {
-  ASSIGNOR_NAME_REQUIRED,
-  ASSIGNOR_NAME_MIN_LENGTH,
-  ASSIGNOR_NAME_MAX_LENGTH,
-  ASSIGNOR_EMAIL_REQUIRED,
-  ASSIGNOR_EMAIL_MIN_LENGTH,
-  ASSIGNOR_EMAIL_MAX_LENGTH,
-  ASSIGNOR_EMAIL_INVALID,
-  ASSIGNOR_PHONE_REQUIRED,
-  ASSIGNOR_PHONE_MIN_LENGTH,
-  ASSIGNOR_PHONE_MAX_LENGTH,
-  ASSIGNOR_DOCUMENT_REQUIRED,
-  ASSIGNOR_DOCUMENT_MIN_LENGTH,
-  ASSIGNOR_DOCUMENT_MAX_LENGTH,
-} from '../../common/constants/assignors/validation-messages';
+import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateAssignorDto {
-  /**
-   * name
-   */
+  @ApiProperty({
+    description: 'Name of the assignor',
+    example: 'John Doe',
+  })
   @IsString()
-  @IsNotEmpty({
-    message: ASSIGNOR_NAME_REQUIRED,
-  })
-  @MinLength(3, {
-    message: ASSIGNOR_NAME_MIN_LENGTH,
-  })
-  @MaxLength(140, {
-    message: ASSIGNOR_NAME_MAX_LENGTH,
-  })
+  @IsNotEmpty()
+  @MinLength(3)
+  @MaxLength(140)
   readonly name: string;
 
-  /**
-   * email
-   */
+  @ApiProperty({
+    description: 'Email of the assignor',
+    example: 'johndoe@example.com',
+  })
   @IsString()
-  @IsNotEmpty({
-    message: ASSIGNOR_EMAIL_REQUIRED,
-  })
-  @IsEmail(undefined, {
-    message: ASSIGNOR_EMAIL_INVALID,
-  })
-  @MinLength(5, {
-    message: ASSIGNOR_EMAIL_MIN_LENGTH,
-  })
-  @MaxLength(140, {
-    message: ASSIGNOR_EMAIL_MAX_LENGTH,
-  })
+  @IsNotEmpty()
+  @IsEmail()
+  @MinLength(5)
+  @MaxLength(140)
   readonly email: string;
 
-  /**
-   * phone
-   */
+  @ApiProperty({
+    description: 'Phone number of the assignor',
+    example: '+12345678901',
+  })
   @IsString()
-  @IsNotEmpty({
-    message: ASSIGNOR_PHONE_REQUIRED,
-  })
-  @MinLength(11, {
-    message: ASSIGNOR_PHONE_MIN_LENGTH,
-  })
-  @MaxLength(20, {
-    message: ASSIGNOR_PHONE_MAX_LENGTH,
-  })
+  @IsNotEmpty()
+  @MinLength(11)
+  @MaxLength(20)
   readonly phone: string;
 
-  /**
-   * document
-   */
+  @ApiProperty({
+    description: 'Document identifier of the assignor',
+    example: '12345678901',
+  })
   @IsString()
-  @IsNotEmpty({
-    message: ASSIGNOR_DOCUMENT_REQUIRED,
-  })
-  @MinLength(11, {
-    message: ASSIGNOR_DOCUMENT_MIN_LENGTH,
-  })
-  @MaxLength(30, {
-    message: ASSIGNOR_DOCUMENT_MAX_LENGTH,
-  })
+  @IsNotEmpty()
+  @MinLength(11)
+  @MaxLength(30)
   readonly document: string;
 }

@@ -1,6 +1,6 @@
 import { PrismaService } from '../src/database/prisma.service';
 import { UsersService } from '../src/modules/users/users.service';
-import { UserRole } from '../src/modules/common/constants/users/user-role.enum';
+import { UserRole } from '../src/modules/common/constants/permissions/role.enum';
 
 class Seed {
   private usersService: UsersService;

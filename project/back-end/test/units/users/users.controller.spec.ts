@@ -3,7 +3,7 @@ import { UsersController } from '../../../src/modules/users/users.controller';
 import { UsersService } from '../../../src/modules/users/users.service';
 import { CreateUserDto } from '../../../src/modules/users/dto/create-user.dto';
 import { UpdateUserDto } from '../../../src/modules/users/dto/update-user.dto';
-import { UserRole } from '../../../src/modules/common/constants/users/user-role.enum';
+import { UserRole } from '../../../src/modules/common/constants/permissions/role.enum';
 
 describe('UsersController', () => {
   let controller: UsersController;

@@ -22,10 +22,12 @@ import {
   ApiResponse,
   ApiParam,
   ApiQuery,
+  ApiExtraModels,
 } from '@nestjs/swagger';
 import { PayableEntity } from './entities/payable.entity';
 
 @ApiTags('Payables')
+@ApiExtraModels(CreatePayableDto, UpdatePayableDto, PayableEntity)
 @ApiBearerAuth()
 @Controller('payables')
 @UseGuards(JwtAuthGuard, RolesGuard)

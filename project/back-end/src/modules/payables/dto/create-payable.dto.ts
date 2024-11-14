@@ -5,49 +5,32 @@ import {
   IsDateString,
   Min,
 } from 'class-validator';
-import {
-  PAYABLE_ASSIGNOR_ID_REQUIRED,
-  PAYABLE_ASSIGNOR_ID_INVALID,
-  PAYABLE_VALUE_REQUIRED,
-  PAYABLE_VALUE_INVALID,
-  PAYABLE_EMISSION_DATE_REQUIRED,
-  PAYABLE_EMISSION_DATE_INVALID,
-} from '../../common/constants/payables/validation-messages';
+import { ApiProperty } from '@nestjs/swagger';
 
 export class CreatePayableDto {
-  /**
-   * assignorId
-   */
-  @IsUUID('4', {
-    message: PAYABLE_ASSIGNOR_ID_INVALID,
+  @ApiProperty({
+    description: 'UUID of the assignor',
+    example: '123e4567-e89b-12d3-a456-426614174000',
   })
-  @IsNotEmpty({
-    message: PAYABLE_ASSIGNOR_ID_REQUIRED,
-  })
+  @IsUUID('4')
+  @IsNotEmpty()
   assignorId: string;
 
-  /**
-   * value
-   */
-  @IsNumber(undefined, {
-    message: PAYABLE_VALUE_INVALID,
+  @ApiProperty({
+    description: 'Value of the payable',
+    example: 1000.0,
+    minimum: 0,
   })
-  @IsNotEmpty({
-    message: PAYABLE_VALUE_REQUIRED,
-  })
-  @Min(0, {
-    message: 'The value must be greater than or equal to 0.',
-  })
+  @IsNumber()
+  @IsNotEmpty()
+  @Min(0)
   value: number;
 
-  /**
-   * emissionDate
-   */
-  @IsDateString(undefined, {
-    message: PAYABLE_EMISSION_DATE_INVALID,
+  @ApiProperty({
+    description: 'Emission date of the payable',
+    example: '2024-01-01T00:00:00Z',
   })
-  @IsNotEmpty({
-    message: PAYABLE_EMISSION_DATE_REQUIRED,
-  })
-  emissionDate: string;
+  @IsDateString()
+  @IsNotEmpty()
+  emissionDate: Date;
 }

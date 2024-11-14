@@ -6,52 +6,40 @@ import {
   MaxLength,
   Matches,
 } from 'class-validator';
-import { UserRole } from 'src/modules/common/constants/users/user-role.enum';
-import {
-  LOGIN_MIN_LENGTH,
-  LOGIN_MAX_LENGTH,
-  LOGIN_PATTERN,
-  PASSWORD_MIN_LENGTH,
-  PASSWORD_MAX_LENGTH,
-  ROLE_INVALID,
-} from '../../common/constants/users/validation-messages';
+import { ApiProperty } from '@nestjs/swagger';
+import { UserRole } from 'src/modules/common/constants/permissions/role.enum';
 
 export class UpdateUserDto {
-  /**
-   * login
-   */
+  @ApiProperty({
+    description: 'User login',
+    example: 'aproveme',
+    required: false,
+  })
   @IsString()
   @IsOptional()
-  @MinLength(4, {
-    message: LOGIN_MIN_LENGTH,
-  })
-  @MaxLength(50, {
-    message: LOGIN_MAX_LENGTH,
-  })
-  @Matches(/^[a-zA-Z0-9]+$/, {
-    message: LOGIN_PATTERN,
-  })
+  @MinLength(8)
+  @MaxLength(40)
+  @Matches(/^[a-zA-Z0-9]+$/)
   login?: string;
 
-  /**
-   * password
-   */
+  @ApiProperty({
+    description: 'User password',
+    example: 'aproveme',
+    required: false,
+  })
   @IsString()
   @IsOptional()
-  @MinLength(8, {
-    message: PASSWORD_MIN_LENGTH,
-  })
-  @MaxLength(32, {
-    message: PASSWORD_MAX_LENGTH,
-  })
+  @MinLength(8)
+  @MaxLength(40)
   password?: string;
 
-  /**
-   * role
-   */
-  @IsEnum(UserRole, {
-    message: ROLE_INVALID(Object.values(UserRole).join(', ')),
+  @ApiProperty({
+    description: 'User role',
+    example: 'Admin',
+    required: false,
+    enum: UserRole,
   })
+  @IsEnum(UserRole)
   @IsOptional()
   role?: UserRole;
 }
