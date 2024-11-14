@@ -7,6 +7,7 @@ import { AssignorsModule } from './modules/assignors/assignors.module';
 import { PayablesModule } from './modules/payables/payables.module';
 import { BatchsModule } from './modules/batchs/batchs.module';
 import { BatchItemsModule } from './modules/batch-items/batch-items.module';
+import { DeadLetterQueuesModule } from './modules/dead-letter-queues/dead-letter-queues.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { BatchItemsModule } from './modules/batch-items/batch-items.module';
     PayablesModule,
     BatchsModule,
     BatchItemsModule,
+    DeadLetterQueuesModule,
   ],
   controllers: [],
   providers: [PrismaService],
