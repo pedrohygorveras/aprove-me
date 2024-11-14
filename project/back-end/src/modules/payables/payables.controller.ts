@@ -8,6 +8,7 @@ import {
   Delete,
   UseGuards,
   Query,
+  BadRequestException,
 } from '@nestjs/common';
 import { PayablesService } from './payables.service';
 import { CreatePayableDto } from './dto/create-payable.dto';
@@ -23,6 +24,7 @@ import {
   ApiParam,
   ApiQuery,
   ApiExtraModels,
+  ApiBody,
 } from '@nestjs/swagger';
 import { PayableEntity } from './entities/payable.entity';
 
@@ -33,6 +35,66 @@ import { PayableEntity } from './entities/payable.entity';
 @UseGuards(JwtAuthGuard, RolesGuard)
 export class PayablesController {
   constructor(private readonly payablesService: PayablesService) {}
+
+  /**
+   * Process batch of payables asynchronously
+   */
+  @Roles('Admin')
+  @Post('batch')
+  @ApiOperation({
+    summary: 'Process batch of payables',
+    description:
+      'Allows administrators to process a batch of payables. The batch is queued for asynchronous processing, with a maximum of 10,000 records.',
+  })
+  @ApiResponse({
+    status: 202,
+    description: 'Batch successfully queued for asynchronous processing.',
+    schema: {
+      example: {
+        message: 'Batch received and queued successfully',
+      },
+    },
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Batch size exceeds the allowed limit.',
+    schema: {
+      example: {
+        statusCode: 400,
+        message: 'Batch size cannot exceed 10,000 payables',
+        error: 'Bad Request',
+      },
+    },
+  })
+  @ApiBody({
+    description:
+      'Array of CreatePayableDto objects representing the payables to be processed',
+    type: [CreatePayableDto],
+    examples: {
+      exampleBatch: {
+        summary: 'Example of a valid payables batch',
+        value: [
+          {
+            assignorId: '123e4567-e89b-12d3-a456-426614174000',
+            value: 1000.0,
+            emissionDate: '2024-01-01T00:00:00Z',
+          },
+          {
+            assignorId: '223e4567-e89b-12d3-a456-426614174000',
+            value: 2000.0,
+            emissionDate: '2024-02-01T00:00:00Z',
+          },
+        ],
+      },
+    },
+  })
+  async processBatch(@Body() batch: CreatePayableDto[]) {
+    if (batch.length > 10000) {
+      throw new BadRequestException('Batch size cannot exceed 10,000 payables');
+    }
+    await this.payablesService.enqueueBatch(batch);
+    return { message: 'Batch received and queued successfully' };
+  }
 
   /**
    * Create a new payable
