@@ -47,7 +47,7 @@ export class AssignorsController {
   @ApiResponse({
     status: 201,
     description: 'Assignor successfully created.',
-    type: AssignorEntity,
+    type: CreateAssignorDto,
   })
   @ApiResponse({ status: 400, description: 'Invalid input data' })
   create(@Body() createAssignorDto: CreateAssignorDto) {

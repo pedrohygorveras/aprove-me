@@ -9,16 +9,11 @@ export class AssignorsService {
 
   async create(createAssignorDto: CreateAssignorDto) {
     return this.prisma.assignor.create({
-      data: {
-        name: createAssignorDto.name,
-        email: createAssignorDto.email,
-        phone: createAssignorDto.phone,
-        document: createAssignorDto.document,
-      },
+      data: { ...createAssignorDto },
     });
   }
 
-  async findAll(search?: string, page: number = 1, limit: number = 10) {
+  async findAll(search?: string, page = 1, limit = 10) {
     const whereClause = search
       ? {
           OR: [
@@ -53,20 +48,20 @@ export class AssignorsService {
     };
   }
 
-  findOne(id: string) {
-    return this.prisma.assignor.findUnique({
+  async findOne(id: string) {
+    return this.prisma.assignor.findUniqueOrThrow({
       where: { id },
     });
   }
 
-  update(id: string, updateAssignorDto: UpdateAssignorDto) {
+  async update(id: string, updateAssignorDto: UpdateAssignorDto) {
     return this.prisma.assignor.update({
       where: { id },
       data: { ...updateAssignorDto },
     });
   }
 
-  remove(id: string) {
+  async remove(id: string) {
     return this.prisma.assignor.delete({
       where: { id },
     });
