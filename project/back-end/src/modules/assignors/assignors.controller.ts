@@ -29,7 +29,7 @@ import { AssignorEntity } from './entities/assignor.entity';
 @ApiTags('Assignors')
 @ApiExtraModels(CreateAssignorDto, UpdateAssignorDto, AssignorEntity)
 @ApiBearerAuth()
-@Controller('assignors')
+@Controller('assignor')
 @UseGuards(JwtAuthGuard, RolesGuard)
 export class AssignorsController {
   constructor(private readonly assignorsService: AssignorsService) {}

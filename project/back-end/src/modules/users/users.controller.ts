@@ -31,7 +31,7 @@ import { PartialUserEntity } from './entities/partial-user.entity';
 @ApiTags('Users')
 @ApiExtraModels(LoginDto, CreateUserDto, UpdateUserDto, UserEntity)
 @ApiBearerAuth()
-@Controller('users')
+@Controller('user')
 @UseGuards(JwtAuthGuard, RolesGuard)
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}

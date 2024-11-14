@@ -33,7 +33,7 @@ import { DeadLetterQueueEntity } from './entities/dead-letter-queue.entity';
   DeadLetterQueueEntity,
 )
 @ApiBearerAuth()
-@Controller('dead-letter-queues')
+@Controller('dead-letter-queue')
 @UseGuards(JwtAuthGuard, RolesGuard)
 export class DeadLetterQueuesController {
   constructor(

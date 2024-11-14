@@ -31,7 +31,7 @@ import { PayableEntity } from './entities/payable.entity';
 @ApiTags('Payables')
 @ApiExtraModels(CreatePayableDto, UpdatePayableDto, PayableEntity)
 @ApiBearerAuth()
-@Controller('payables')
+@Controller('payable')
 @UseGuards(JwtAuthGuard, RolesGuard)
 export class PayablesController {
   constructor(private readonly payablesService: PayablesService) {}

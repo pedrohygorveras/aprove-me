@@ -29,7 +29,7 @@ import { BatchEntity } from './entities/batch.entity';
 @ApiTags('Batchs')
 @ApiExtraModels(CreateBatchDto, UpdateBatchDto, BatchEntity)
 @ApiBearerAuth()
-@Controller('batchs')
+@Controller('batch')
 @UseGuards(JwtAuthGuard, RolesGuard)
 export class BatchsController {
   constructor(private readonly batchsService: BatchsService) {}
