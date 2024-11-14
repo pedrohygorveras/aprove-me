@@ -22,6 +22,9 @@ export class BatchsService {
       this.prisma.batch.findMany({
         skip: (page - 1) * limit,
         take: limit,
+        orderBy: {
+          createdAt: 'desc',
+        },
         select: {
           id: true,
           status: true,

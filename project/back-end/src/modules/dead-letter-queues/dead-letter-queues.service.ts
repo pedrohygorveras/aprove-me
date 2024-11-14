@@ -26,6 +26,9 @@ export class DeadLetterQueuesService {
         where: whereClause,
         skip: (page - 1) * limit,
         take: limit,
+        orderBy: {
+          createdAt: 'desc',
+        },
         select: {
           id: true,
           payableId: true,
