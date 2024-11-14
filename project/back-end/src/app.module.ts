@@ -5,6 +5,8 @@ import { UsersModule } from './modules/users/users.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { AssignorsModule } from './modules/assignors/assignors.module';
 import { PayablesModule } from './modules/payables/payables.module';
+import { BatchsModule } from './modules/batchs/batchs.module';
+import { BatchItemsModule } from './modules/batch-items/batch-items.module';
 
 @Module({
   imports: [
@@ -15,6 +17,8 @@ import { PayablesModule } from './modules/payables/payables.module';
     UsersModule,
     AssignorsModule,
     PayablesModule,
+    BatchsModule,
+    BatchItemsModule,
   ],
   controllers: [],
   providers: [PrismaService],
