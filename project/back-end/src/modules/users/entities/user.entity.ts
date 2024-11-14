@@ -7,14 +7,33 @@ export class UserEntity {
   })
   id: string;
 
+  @ApiProperty({
+    description: 'Name of the user',
+    example: 'John Doe',
+  })
+  name: string;
+
   @ApiProperty({ description: 'User login', example: 'aproveme' })
   login: string;
 
+  @ApiProperty({
+    description: 'Email of the user',
+    example: 'johndoe@example.com',
+  })
+  email: string;
+
   @ApiProperty({ description: 'User password', example: 'aproveme' })
-  password: string;
+  password?: string;
 
   @ApiProperty({ description: 'User role', example: 'Admin' })
   role: string;
+
+  @ApiProperty({
+    description: 'User refresh token for session management',
+    example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
+    nullable: true,
+  })
+  refreshToken?: string;
 
   @ApiProperty({
     description: 'Date the user was created',
