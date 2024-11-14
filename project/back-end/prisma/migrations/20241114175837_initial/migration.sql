@@ -1,8 +1,10 @@
 -- CreateTable
 CREATE TABLE "users" (
     "id" TEXT NOT NULL PRIMARY KEY,
+    "name" TEXT NOT NULL,
     "login" TEXT NOT NULL,
     "password" TEXT NOT NULL,
+    "email" TEXT NOT NULL,
     "role" TEXT NOT NULL,
     "refreshToken" TEXT,
     "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -66,6 +68,9 @@ CREATE TABLE "dead_letter_queues" (
 
 -- CreateIndex
 CREATE UNIQUE INDEX "users_login_key" ON "users"("login");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "users_email_key" ON "users"("email");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "assignors_email_key" ON "assignors"("email");

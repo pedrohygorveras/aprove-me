@@ -18,14 +18,18 @@ class Seed {
   }
 
   private async createAdminUser() {
+    const name = 'Pedro';
     const login = 'aprovame';
+    const email = 'pedrohygorveras@gmail.com';
     const password = 'aprovame';
 
     const existingUser = await this.usersService.findByLogin(login);
 
     if (!existingUser) {
       await this.usersService.create({
+        name,
         login,
+        email,
         password,
         role: UserRole.Admin,
       });
