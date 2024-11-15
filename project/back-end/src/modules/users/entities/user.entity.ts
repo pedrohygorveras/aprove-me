@@ -13,8 +13,8 @@ export class UserEntity {
   })
   name: string;
 
-  @ApiProperty({ description: 'User login', example: 'aproveme' })
-  login: string;
+  @ApiProperty({ description: 'Username', example: 'aproveme' })
+  username: string;
 
   @ApiProperty({
     description: 'Email of the user',

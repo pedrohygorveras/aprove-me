@@ -30,7 +30,7 @@ export class AuthController {
       example1: {
         summary: 'A typical login request',
         value: {
-          login: 'aprovame',
+          username: 'aprovame',
           password: 'aprovame',
         },
       },

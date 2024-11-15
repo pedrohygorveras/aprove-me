@@ -15,8 +15,8 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  async validateUser(login: string, password: string) {
-    const user = await this.usersService.findByLogin(login);
+  async validateUser(username: string, password: string) {
+    const user = await this.usersService.findByLogin(username);
     if (user && (await bcrypt.compare(password, user.password))) {
       return user;
     }
@@ -26,7 +26,7 @@ export class AuthService {
   async login(user: any) {
     const payload = {
       id: user.id,
-      login: user.login,
+      username: user.username,
       role: user.role,
     };
 
@@ -64,7 +64,7 @@ export class AuthService {
       const newAccessToken = this.jwtService.sign(
         {
           id: user.id,
-          login: user.login,
+          username: user.username,
           role: user.role,
         },
         { expiresIn: this.accessTokenExpiration },

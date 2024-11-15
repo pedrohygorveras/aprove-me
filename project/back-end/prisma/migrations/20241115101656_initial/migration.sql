@@ -2,7 +2,7 @@
 CREATE TABLE "users" (
     "id" TEXT NOT NULL PRIMARY KEY,
     "name" TEXT NOT NULL,
-    "login" TEXT NOT NULL,
+    "username" TEXT NOT NULL,
     "password" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "role" TEXT NOT NULL,
@@ -71,7 +71,7 @@ CREATE TABLE "dead_letter_queues" (
 );
 
 -- CreateIndex
-CREATE UNIQUE INDEX "users_login_key" ON "users"("login");
+CREATE UNIQUE INDEX "users_username_key" ON "users"("username");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "users_email_key" ON "users"("email");

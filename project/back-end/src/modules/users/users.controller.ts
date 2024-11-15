@@ -92,7 +92,7 @@ export class UsersController {
           {
             id: '1',
             name: 'User Name',
-            login: 'user1',
+            username: 'user1',
             email: 'user1@example.com',
             role: 'Admin',
             createdAt: '2024-01-01T00:00:00Z',

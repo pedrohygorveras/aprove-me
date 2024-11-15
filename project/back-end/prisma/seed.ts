@@ -19,23 +19,23 @@ class Seed {
 
   private async createAdminUser() {
     const name = 'Pedro';
-    const login = 'aprovame';
+    const username = 'aprovame';
     const email = 'pedrohygorveras@gmail.com';
     const password = 'aprovame';
 
-    const existingUser = await this.usersService.findByLogin(login);
+    const existingUser = await this.usersService.findByLogin(username);
 
     if (!existingUser) {
       await this.usersService.create({
         name,
-        login,
+        username,
         email,
         password,
         role: UserRole.Admin,
       });
-      console.log(`User "${login}" created with role ${UserRole.Admin}.`);
+      console.log(`User "${username}" created with role ${UserRole.Admin}.`);
     } else {
-      console.log(`User "${login}" already exists. Skipping creation.`);
+      console.log(`User "${username}" already exists. Skipping creation.`);
     }
   }
 }

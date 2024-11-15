@@ -15,9 +15,9 @@ export class UsersService {
     });
   }
 
-  async findByLogin(login: string) {
+  async findByLogin(username: string) {
     return this.prisma.user.findUnique({
-      where: { login },
+      where: { username },
     });
   }
 
@@ -33,7 +33,7 @@ export class UsersService {
     return this.prisma.user.create({
       data: {
         name: createUserDto.name,
-        login: createUserDto.login,
+        username: createUserDto.username,
         email: createUserDto.email,
         password: hash,
         role: createUserDto.role,
@@ -45,7 +45,7 @@ export class UsersService {
     const whereClause = search
       ? {
           OR: [
-            { login: { contains: search, mode: 'insensitive' } },
+            { username: { contains: search, mode: 'insensitive' } },
             { role: { contains: search, mode: 'insensitive' } },
           ],
         }
@@ -62,7 +62,7 @@ export class UsersService {
         select: {
           id: true,
           name: true,
-          login: true,
+          username: true,
           email: true,
           role: true,
           createdAt: true,

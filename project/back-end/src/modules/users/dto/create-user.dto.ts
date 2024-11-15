@@ -21,13 +21,13 @@ export class CreateUserDto {
   @MaxLength(140)
   readonly name: string;
 
-  @ApiProperty({ description: 'User login', example: 'aproveme' })
+  @ApiProperty({ description: 'Username', example: 'aproveme' })
   @IsString()
   @IsNotEmpty()
   @MinLength(8)
   @MaxLength(40)
   @Matches(/^[a-zA-Z0-9]+$/)
-  login: string;
+  username: string;
 
   @ApiProperty({
     description: 'Email of the user',
