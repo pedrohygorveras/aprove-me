@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { RabbitSubscribe } from '@golevelup/nestjs-rabbitmq';
+import { RabbitPayload, RabbitSubscribe } from '@golevelup/nestjs-rabbitmq';
 import { PrismaService } from '../../database/prisma.service';
 import { CreatePayableDto } from './dto/create-payable.dto';
 import { BatchEntity } from '../batchs/entities/batch.entity';
@@ -18,5 +18,9 @@ export class PayableProcessor {
     routingKey: 'payable.create',
     queue: 'payablesQueue',
   })
-  async handleProcessPayable({}: HandleProcessPayableProps) {}
+  async handleProcessPayable(
+    @RabbitPayload() payload: HandleProcessPayableProps,
+  ) {
+    return payload;
+  }
 }
