@@ -4,10 +4,9 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install --only=production
 
-COPY .env .env
-COPY ./dist ./dist
+COPY . .
 
-RUN npx prisma generate
+RUN npx prisma generate --schema=./prisma/schema.prisma
 
 EXPOSE 5000
 
