@@ -8,6 +8,13 @@ const app_module_1 = require("./app.module");
 const prisma_exception_filter_1 = require("./prisma-exception.filter");
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
+    app.enableCors({
+        origin: '*',
+        methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+        allowedHeaders: '*',
+        exposedHeaders: '*',
+        credentials: true,
+    });
     app.setGlobalPrefix('integrations');
     app.useGlobalPipes(new common_1.ValidationPipe({ whitelist: true, forbidNonWhitelisted: true }));
     app.useGlobalFilters(new prisma_exception_filter_1.PrismaExceptionFilter());
