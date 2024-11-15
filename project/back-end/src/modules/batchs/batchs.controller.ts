@@ -37,7 +37,7 @@ export class BatchsController {
   /**
    * Create a new batch
    */
-  @Roles('Admin')
+  @Roles('Admin', 'Operator', 'Auditor', 'Manager', 'Support')
   @Post()
   @ApiOperation({
     summary: 'Create a new batch',
@@ -56,7 +56,7 @@ export class BatchsController {
   /**
    * Retrieve all batches with pagination
    */
-  @Roles('Admin')
+  @Roles('Admin', 'Operator', 'Auditor', 'Manager', 'Support')
   @Get()
   @ApiOperation({
     summary: 'Retrieve all batches with pagination',
@@ -108,7 +108,7 @@ export class BatchsController {
   /**
    * Get batch by ID
    */
-  @Roles('Admin')
+  @Roles('Admin', 'Operator', 'Auditor', 'Manager', 'Support')
   @Get(':id')
   @ApiOperation({
     summary: 'Get batch by ID',
@@ -128,7 +128,7 @@ export class BatchsController {
   /**
    * Update batch details
    */
-  @Roles('Admin')
+  @Roles('Admin', 'Operator', 'Auditor', 'Manager', 'Support')
   @Patch(':id')
   @ApiOperation({
     summary: 'Update batch details',
@@ -149,7 +149,7 @@ export class BatchsController {
   /**
    * Delete a batch
    */
-  @Roles('Admin')
+  @Roles('Admin', 'Operator', 'Auditor', 'Manager', 'Support')
   @Delete(':id')
   @ApiOperation({
     summary: 'Delete a batch',

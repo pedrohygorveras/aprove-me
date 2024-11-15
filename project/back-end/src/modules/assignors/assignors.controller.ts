@@ -37,7 +37,7 @@ export class AssignorsController {
   /**
    * Create a new assignor
    */
-  @Roles('Admin')
+  @Roles('Admin', 'Operator', 'Auditor', 'Manager', 'Support')
   @Post()
   @ApiOperation({
     summary: 'Create a new assignor',
@@ -57,7 +57,7 @@ export class AssignorsController {
   /**
    * Retrieve all assignors with pagination and search
    */
-  @Roles('Admin')
+  @Roles('Admin', 'Operator', 'Auditor', 'Manager', 'Support')
   @Get()
   @ApiOperation({
     summary: 'Retrieve all assignors with pagination and search',
@@ -116,7 +116,7 @@ export class AssignorsController {
   /**
    * Get assignor by ID
    */
-  @Roles('Admin')
+  @Roles('Admin', 'Operator', 'Auditor', 'Manager', 'Support')
   @Get(':id')
   @ApiOperation({
     summary: 'Get assignor by ID',
@@ -137,7 +137,7 @@ export class AssignorsController {
   /**
    * Update assignor details
    */
-  @Roles('Admin')
+  @Roles('Admin', 'Operator', 'Auditor', 'Manager', 'Support')
   @Patch(':id')
   @ApiOperation({
     summary: 'Update assignor details',
@@ -161,7 +161,7 @@ export class AssignorsController {
   /**
    * Delete an assignor
    */
-  @Roles('Admin')
+  @Roles('Admin', 'Operator', 'Auditor', 'Manager', 'Support')
   @Delete(':id')
   @ApiOperation({
     summary: 'Delete an assignor',

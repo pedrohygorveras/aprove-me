@@ -43,7 +43,7 @@ export class DeadLetterQueuesController {
   /**
    * Create a new dead letter queue item
    */
-  @Roles('Admin')
+  @Roles('Admin', 'Operator', 'Auditor', 'Manager', 'Support')
   @Post()
   @ApiOperation({
     summary: 'Create a new dead letter queue item',
@@ -63,7 +63,7 @@ export class DeadLetterQueuesController {
   /**
    * Retrieve all dead letter queue items with pagination and optional payableId filter
    */
-  @Roles('Admin')
+  @Roles('Admin', 'Operator', 'Auditor', 'Manager', 'Support')
   @Get()
   @ApiOperation({
     summary: 'Retrieve all dead letter queue items with pagination',
@@ -127,7 +127,7 @@ export class DeadLetterQueuesController {
   /**
    * Get dead letter queue item by ID
    */
-  @Roles('Admin')
+  @Roles('Admin', 'Operator', 'Auditor', 'Manager', 'Support')
   @Get(':id')
   @ApiOperation({
     summary: 'Get dead letter queue item by ID',
@@ -151,7 +151,7 @@ export class DeadLetterQueuesController {
   /**
    * Update dead letter queue item details
    */
-  @Roles('Admin')
+  @Roles('Admin', 'Operator', 'Auditor', 'Manager', 'Support')
   @Patch(':id')
   @ApiOperation({
     summary: 'Update dead letter queue item details',
@@ -178,7 +178,7 @@ export class DeadLetterQueuesController {
   /**
    * Delete a dead letter queue item
    */
-  @Roles('Admin')
+  @Roles('Admin', 'Operator', 'Auditor', 'Manager', 'Support')
   @Delete(':id')
   @ApiOperation({
     summary: 'Delete a dead letter queue item',

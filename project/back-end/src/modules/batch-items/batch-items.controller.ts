@@ -37,7 +37,7 @@ export class BatchItemsController {
   /**
    * Create a new batch item
    */
-  @Roles('Admin')
+  @Roles('Admin', 'Operator', 'Auditor', 'Manager', 'Support')
   @Post()
   @ApiOperation({
     summary: 'Create a new batch item',
@@ -57,7 +57,7 @@ export class BatchItemsController {
   /**
    * Retrieve all batch items with pagination and optional batch ID filter
    */
-  @Roles('Admin')
+  @Roles('Admin', 'Operator', 'Auditor', 'Manager', 'Support')
   @Get()
   @ApiOperation({
     summary: 'Retrieve all batch items with pagination',
@@ -116,7 +116,7 @@ export class BatchItemsController {
   /**
    * Get batch item by ID
    */
-  @Roles('Admin')
+  @Roles('Admin', 'Operator', 'Auditor', 'Manager', 'Support')
   @Get(':id')
   @ApiOperation({
     summary: 'Get batch item by ID',
@@ -137,7 +137,7 @@ export class BatchItemsController {
   /**
    * Update batch item details
    */
-  @Roles('Admin')
+  @Roles('Admin', 'Operator', 'Auditor', 'Manager', 'Support')
   @Patch(':id')
   @ApiOperation({
     summary: 'Update batch item details',
@@ -161,7 +161,7 @@ export class BatchItemsController {
   /**
    * Delete a batch item
    */
-  @Roles('Admin')
+  @Roles('Admin', 'Operator', 'Auditor', 'Manager', 'Support')
   @Delete(':id')
   @ApiOperation({
     summary: 'Delete a batch item',

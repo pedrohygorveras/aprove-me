@@ -38,7 +38,7 @@ export class PayablesController {
   /**
    * Process batch of payables asynchronously
    */
-  @Roles('Admin')
+  @Roles('Admin', 'Operator', 'Auditor', 'Manager', 'Support')
   @Post('batch')
   @ApiOperation({
     summary: 'Process batch of payables',
@@ -94,7 +94,7 @@ export class PayablesController {
   /**
    * Create a new payable
    */
-  @Roles('Admin')
+  @Roles('Admin', 'Operator', 'Auditor', 'Manager', 'Support')
   @Post()
   @ApiOperation({
     summary: 'Create a new payable',
@@ -113,7 +113,7 @@ export class PayablesController {
   /**
    * Retrieve all payables with pagination and optional filters
    */
-  @Roles('Admin')
+  @Roles('Admin', 'Operator', 'Auditor', 'Manager', 'Support')
   @Get()
   @ApiOperation({
     summary: 'Retrieve all payables with pagination',
@@ -171,7 +171,7 @@ export class PayablesController {
   /**
    * Get payable by ID
    */
-  @Roles('Admin')
+  @Roles('Admin', 'Operator', 'Auditor', 'Manager', 'Support')
   @Get(':id')
   @ApiOperation({
     summary: 'Get payable by ID',
@@ -191,7 +191,7 @@ export class PayablesController {
   /**
    * Update payable details
    */
-  @Roles('Admin')
+  @Roles('Admin', 'Operator', 'Auditor', 'Manager', 'Support')
   @Patch(':id')
   @ApiOperation({
     summary: 'Update payable details',
@@ -212,7 +212,7 @@ export class PayablesController {
   /**
    * Delete a payable
    */
-  @Roles('Admin')
+  @Roles('Admin', 'Operator', 'Auditor', 'Manager', 'Support')
   @Delete(':id')
   @ApiOperation({
     summary: 'Delete a payable',

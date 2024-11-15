@@ -39,7 +39,7 @@ export class UsersController {
   /**
    * Create a new user
    */
-  @Roles('Admin')
+  @Roles('Admin', 'Operator', 'Auditor', 'Manager', 'Support')
   @Post()
   @ApiOperation({
     summary: 'Create a new user',
@@ -59,7 +59,7 @@ export class UsersController {
   /**
    * Retrieve all users with pagination and search
    */
-  @Roles('Admin')
+  @Roles('Admin', 'Operator', 'Auditor', 'Manager', 'Support')
   @Get()
   @ApiOperation({
     summary: 'Retrieve all users with pagination and search',
@@ -118,7 +118,7 @@ export class UsersController {
   /**
    * Get user by ID
    */
-  @Roles('Admin')
+  @Roles('Admin', 'Operator', 'Auditor', 'Manager', 'Support')
   @Get(':id')
   @ApiOperation({
     summary: 'Get user by ID',
@@ -138,7 +138,7 @@ export class UsersController {
   /**
    * Update user details
    */
-  @Roles('Admin')
+  @Roles('Admin', 'Operator', 'Auditor', 'Manager', 'Support')
   @Patch(':id')
   @ApiOperation({
     summary: 'Update user details',
@@ -159,7 +159,7 @@ export class UsersController {
   /**
    * Delete a user
    */
-  @Roles('Admin')
+  @Roles('Admin', 'Operator', 'Auditor', 'Manager', 'Support')
   @Delete(':id')
   @ApiOperation({
     summary: 'Delete a user',
