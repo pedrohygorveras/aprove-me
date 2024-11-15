@@ -44,6 +44,7 @@ export class AuthController {
         accessToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
         refreshToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
         user: {
+          id: '123e4567-e89b-12d3-a456-426614174000',
           name: 'John Doe',
           email: 'john.doe@example.com',
           role: 'Admin',
@@ -75,13 +76,7 @@ export class AuthController {
     description: 'The refresh token required to generate a new access token',
     schema: {
       example: {
-        raccessToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
         refreshToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
-        user: {
-          name: 'John Doe',
-          email: 'john.doe@example.com',
-          role: 'Admin',
-        },
       },
     },
   })
@@ -91,7 +86,9 @@ export class AuthController {
     schema: {
       example: {
         accessToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
+        refreshToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
         user: {
+          id: '123e4567-e89b-12d3-a456-426614174000',
           name: 'John Doe',
           email: 'john.doe@example.com',
           role: 'Admin',
