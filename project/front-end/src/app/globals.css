@@ -9,4 +9,12 @@
     @apply space-y-6;
     @apply px-6;
   }
+
+  .bg-auth {
+    background: linear-gradient(rgb(0, 0, 0, 0.45), rgba(0, 0, 0, 0.75)),
+      url("/images/bg-home.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
 }
