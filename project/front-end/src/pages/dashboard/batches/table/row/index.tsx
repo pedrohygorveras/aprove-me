@@ -1,5 +1,5 @@
 import React from "react";
-import { FaCheckCircle, FaExclamation, FaTimesCircle } from "react-icons/fa";
+import { FaCheckCircle, FaExclamation } from "react-icons/fa";
 
 export const TableRow: React.FC<{ row: any }> = ({ row }) => {
   return (
