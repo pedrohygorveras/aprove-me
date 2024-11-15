@@ -159,3 +159,39 @@ A aplicação é completamente **responsiva** e adaptável a diferentes tamanhos
 
 - **Tela de Cadastro**: Formulários adaptáveis para diferentes dispositivos.
 - **Listagens**: Tabelas que ajustam suas colunas e conteúdo conforme a resolução da tela.
+
+---
+
+## 📷 Plataforma
+
+![Modelo de Banco de Dados](../back-end/doc/1.png)
+
+![Modelo de Banco de Dados](../back-end/doc/2.png)
+
+![Modelo de Banco de Dados](../back-end/doc/3.png)
+
+![Modelo de Banco de Dados](../back-end/doc/4.png)
+
+![Modelo de Banco de Dados](../back-end/doc/5.png)
+
+![Modelo de Banco de Dados](../back-end/doc/6.png)
+
+![Modelo de Banco de Dados](../back-end/doc/7.png)
+
+![Modelo de Banco de Dados](../back-end/doc/8.png)
+
+![Modelo de Banco de Dados](../back-end/doc/9.png)
+
+![Modelo de Banco de Dados](../back-end/doc/10.png)
+
+![Modelo de Banco de Dados](../back-end/doc/11.png)
+
+![Modelo de Banco de Dados](../back-end/doc/12.png)
+
+![Modelo de Banco de Dados](../back-end/doc/13.png)
+
+---
+
+## Sistema Responsivo
+
+![Modelo de Banco de Dados](../back-end/doc/14.png)
