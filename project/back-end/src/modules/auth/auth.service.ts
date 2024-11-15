@@ -73,6 +73,8 @@ export class AuthService {
         expiresIn: this.refreshTokenExpiration,
       });
 
+      await this.usersService.saveRefreshToken(user.id, newRefreshToken);
+
       return {
         accessToken: newAccessToken,
         refreshToken: newRefreshToken,
