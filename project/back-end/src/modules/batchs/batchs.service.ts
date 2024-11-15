@@ -10,9 +10,7 @@ export class BatchsService {
   async create(createBatchDto: CreateBatchDto) {
     return this.prisma.batch.create({
       data: {
-        status: createBatchDto.status,
-        totalSuccess: createBatchDto.totalSuccess || 0,
-        totalFailed: createBatchDto.totalFailed || 0,
+        ...createBatchDto,
       },
     });
   }
@@ -24,14 +22,6 @@ export class BatchsService {
         take: limit,
         orderBy: {
           createdAt: 'desc',
-        },
-        select: {
-          id: true,
-          status: true,
-          totalSuccess: true,
-          totalFailed: true,
-          createdAt: true,
-          updatedAt: true,
         },
       }),
       this.prisma.batch.count(),

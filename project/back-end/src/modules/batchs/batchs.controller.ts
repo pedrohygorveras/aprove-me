@@ -82,9 +82,10 @@ export class BatchsController {
         data: [
           {
             id: '1',
-            status: 'pending',
+            processing: true,
             totalSuccess: 5,
             totalFailed: 3,
+            total: 8,
             createdAt: '2024-01-01T00:00:00Z',
             updatedAt: '2024-01-01T00:00:00Z',
           },

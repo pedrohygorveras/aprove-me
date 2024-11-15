@@ -11,7 +11,7 @@ export class BatchEntity {
     description: 'Status of the batch',
     example: 'pending',
   })
-  status: string;
+  processing: boolean;
 
   @ApiProperty({
     description: 'Total number of successful items in the batch',
@@ -24,6 +24,12 @@ export class BatchEntity {
     example: 0,
   })
   totalFailed: number;
+
+  @ApiProperty({
+    description: 'Total number in the batch',
+    example: 0,
+  })
+  total: number;
 
   @ApiProperty({
     description: 'Date when the batch was created',
