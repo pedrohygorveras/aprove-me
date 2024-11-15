@@ -1,66 +1,42 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { AmqpConnection } from '@golevelup/nestjs-rabbitmq';
 import { PrismaService } from '../../database/prisma.service';
 import { CreatePayableDto } from './dto/create-payable.dto';
 import { UpdatePayableDto } from './dto/update-payable.dto';
-import { EmailService } from './email.service';
-import { DeadLetterQueuesService } from '../dead-letter-queues/dead-letter-queues.service';
+import { BatchsService } from '../batchs/batchs.service';
 
 @Injectable()
 export class PayablesService {
+  private readonly BATCH_LIMIT = 10000;
+
   constructor(
     private readonly prisma: PrismaService,
     private readonly amqpConnection: AmqpConnection,
-    private readonly deadLetterService: DeadLetterQueuesService,
-    private readonly emailService: EmailService,
+    private readonly batchsService: BatchsService,
   ) {}
 
-  async enqueueBatch(batch: CreatePayableDto[]) {
-    const results = [];
+  async createBatchWithQueue(batchItems: CreatePayableDto[]) {
+    const totalItems = batchItems.length;
 
-    for (const payable of batch) {
-      try {
-        await this.enqueuePayable(payable);
-        results.push({ id: payable.id, status: 'queued' });
-      } catch (error) {
-        results.push({
-          id: payable.id,
-          status: 'error',
-          message: error.message,
-        });
-      }
-    }
-
-    return { message: 'Batch received', results };
-  }
-
-  private async enqueuePayable(payable: CreatePayableDto, retryCount = 0) {
-    try {
-      await this.amqpConnection.publish(
-        'payablesExchange',
-        'payable.create',
-        payable,
+    if (totalItems > this.BATCH_LIMIT) {
+      throw new BadRequestException(
+        `Batch size cannot exceed ${this.BATCH_LIMIT} payables`,
       );
-    } catch (error) {
-      if (retryCount < 4) {
-        await this.enqueuePayable(payable, retryCount + 1);
-      } else {
-        await this.moveToDeadLetter(payable, error.message);
-      }
     }
-  }
 
-  private async moveToDeadLetter(
-    payable: CreatePayableDto,
-    errorMessage: string,
-  ) {
-    await this.deadLetterService.create({
-      payableId: payable.id,
-      errorMessage,
+    const batch = await this.batchsService.create({
+      processing: true,
+      totalSuccess: 0,
+      totalFailed: 0,
+      total: totalItems,
     });
 
-    const message = `Payable ID ${payable.id} failed after 4 retries and has been moved to the dead letter queue.`;
-    await this.emailService.notifyUsersByRoles(message, ['Admin', 'Operator']);
+    await this.amqpConnection.publish('payablesExchange', 'payable.create', {
+      payables: batchItems,
+      batch,
+    });
+
+    return { message: 'Batch received and queued successfully' };
   }
 
   async create(createPayableDto: CreatePayableDto) {

@@ -7,6 +7,7 @@ import { PayableProcessor } from './payable.processor';
 import { UsersService } from '../users/users.service';
 import { DeadLetterQueuesService } from '../dead-letter-queues/dead-letter-queues.service';
 import { EmailService } from './email.service';
+import { BatchsService } from '../batchs/batchs.service';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { EmailService } from './email.service';
     DeadLetterQueuesService,
     EmailService,
     UsersService,
+    BatchsService,
   ],
   exports: [PayablesService],
 })

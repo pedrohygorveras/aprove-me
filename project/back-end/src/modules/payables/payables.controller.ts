@@ -8,7 +8,6 @@ import {
   Delete,
   UseGuards,
   Query,
-  BadRequestException,
 } from '@nestjs/common';
 import { PayablesService } from './payables.service';
 import { CreatePayableDto } from './dto/create-payable.dto';
@@ -88,12 +87,8 @@ export class PayablesController {
       },
     },
   })
-  async processBatch(@Body() batch: CreatePayableDto[]) {
-    if (batch.length > 10000) {
-      throw new BadRequestException('Batch size cannot exceed 10,000 payables');
-    }
-    await this.payablesService.enqueueBatch(batch);
-    return { message: 'Batch received and queued successfully' };
+  async createBatchWithQueue(@Body() batchItems: CreatePayableDto[]) {
+    return this.payablesService.createBatchWithQueue(batchItems);
   }
 
   /**
