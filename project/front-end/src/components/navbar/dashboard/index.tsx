@@ -26,7 +26,7 @@ const DashboardNavbar: React.FC<DashboardNavbarProps> = ({ open, setOpen }) => {
                 </button>
               </div>
               <Link to="/dashboard/payables">
-                <img src="/images/logo.png" alt="logo" />
+                <img src="/logo.png" alt="logo" />
               </Link>
             </div>
           </div>

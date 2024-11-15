@@ -2,25 +2,25 @@ import React from "react";
 
 interface TableSearchProps {
   search: string;
-  setSearch: React.Dispatch<React.SetStateAction<string>>;
+  setSearch: any;
 }
 
 const TableSearch: React.FC<TableSearchProps> = ({ search, setSearch }) => {
   return (
-    <label className="form-control border border-input rounded-lg w-full max-w-xs ml-auto">
+    <label className="form-control ml-auto w-full max-w-xs rounded-lg border border-input">
       <div className="flex items-center">
         <input
           type="text"
-          className="input w-full focus:outline-none focus:border-none"
+          className="input w-full focus:border-none focus:outline-none"
           placeholder="Pesquisar"
           value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={e => setSearch(e.target.value)}
         />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 16 16"
           fill="currentColor"
-          className="h-4 w-4 opacity-70 mr-4"
+          className="mr-4 h-4 w-4 opacity-70"
         >
           <path
             fillRule="evenodd"

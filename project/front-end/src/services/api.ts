@@ -16,9 +16,10 @@ export default class Api {
     additionalHeaders: Record<string, string> = {}
   ): Promise<any> {
     const headers = { ...this.defaultHeaders, ...additionalHeaders };
+    const url_fetch = this.baseUrl + url;
 
     try {
-      const response = await fetch(this.baseUrl + url, {
+      const response = await fetch(url_fetch, {
         method,
         headers,
         body: body ? JSON.stringify(body) : null,

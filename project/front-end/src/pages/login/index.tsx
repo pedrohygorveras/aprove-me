@@ -30,7 +30,6 @@ const Login: React.FC = () => {
       setUser(result);
       navigate("/dashboard/assignors", { replace: true });
     } catch (error: any) {
-      console.log(error);
       setErrorMessage(getErrorMessage(error.statusCode));
     }
   };

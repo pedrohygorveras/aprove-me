@@ -40,11 +40,10 @@ const PrivateRoute: React.FC<iPrivateRoute> = ({ children }) => {
             setUser(null);
             setIsAuthenticated(false);
           } else {
-            console.log(result);
-            // setUser(result);
-            //     setIsAuthenticated(true);
+            setUser(result);
+            setIsAuthenticated(true);
           }
-          //   setIsChecking(false);
+          setIsChecking(false);
         }
       }
     };
