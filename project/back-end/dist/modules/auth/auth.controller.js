@@ -38,7 +38,7 @@ __decorate([
     (0, common_1.Post)('/'),
     (0, swagger_1.ApiOperation)({
         summary: 'User login',
-        description: 'Authenticate a user by providing a username and password. Returns a JWT token if the credentials are valid.',
+        description: 'Authenticate a user by providing a login and password. Returns a JWT token if the credentials are valid.',
     }),
     (0, swagger_1.ApiBody)({
         description: 'The credentials required for login',
@@ -47,7 +47,7 @@ __decorate([
             example1: {
                 summary: 'A typical login request',
                 value: {
-                    username: 'aprovame',
+                    login: 'aprovame',
                     password: 'aprovame',
                 },
             },
@@ -70,7 +70,7 @@ __decorate([
     }),
     (0, swagger_1.ApiResponse)({
         status: 401,
-        description: 'Unauthorized - Invalid username or password',
+        description: 'Unauthorized - Invalid login or password',
         schema: {
             example: {
                 statusCode: 401,
