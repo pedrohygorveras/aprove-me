@@ -36,9 +36,10 @@ CREATE TABLE "payables" (
 -- CreateTable
 CREATE TABLE "batchs" (
     "id" TEXT NOT NULL PRIMARY KEY,
-    "status" TEXT NOT NULL,
+    "processing" BOOLEAN NOT NULL DEFAULT true,
     "totalSuccess" INTEGER NOT NULL DEFAULT 0,
     "totalFailed" INTEGER NOT NULL DEFAULT 0,
+    "total" INTEGER NOT NULL DEFAULT 0,
     "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" DATETIME NOT NULL
 );
@@ -59,11 +60,14 @@ CREATE TABLE "batch_itens" (
 -- CreateTable
 CREATE TABLE "dead_letter_queues" (
     "id" TEXT NOT NULL PRIMARY KEY,
-    "payableId" TEXT NOT NULL,
+    "batchId" TEXT NOT NULL,
+    "assignorId" TEXT NOT NULL,
+    "value" REAL NOT NULL,
+    "emissionDate" DATETIME NOT NULL,
     "errorMessage" TEXT NOT NULL,
     "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" DATETIME NOT NULL,
-    CONSTRAINT "dead_letter_queues_payableId_fkey" FOREIGN KEY ("payableId") REFERENCES "payables" ("id") ON DELETE CASCADE ON UPDATE CASCADE
+    CONSTRAINT "dead_letter_queues_batchId_fkey" FOREIGN KEY ("batchId") REFERENCES "batchs" ("id") ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- CreateIndex
@@ -79,4 +83,4 @@ CREATE UNIQUE INDEX "assignors_email_key" ON "assignors"("email");
 CREATE UNIQUE INDEX "assignors_document_key" ON "assignors"("document");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "dead_letter_queues_payableId_key" ON "dead_letter_queues"("payableId");
+CREATE UNIQUE INDEX "dead_letter_queues_batchId_key" ON "dead_letter_queues"("batchId");
