@@ -45,8 +45,8 @@ export class UsersService {
     const whereClause = search
       ? {
           OR: [
-            { username: { contains: search, mode: 'insensitive' } },
-            { role: { contains: search, mode: 'insensitive' } },
+            { username: { contains: search } },
+            { role: { contains: search } },
           ],
         }
       : {};

@@ -95,8 +95,14 @@ export class BatchsController {
       },
     },
   })
-  findAll(@Query('page') page: number = 1, @Query('limit') limit: number = 10) {
-    return this.batchsService.findAll(page, limit);
+  findAll(
+    @Query('page') page: string = '1',
+    @Query('limit') limit: string = '10',
+  ) {
+    const pageNumber = parseInt(page, 10);
+    const limitNumber = parseInt(limit, 10);
+
+    return this.batchsService.findAll(pageNumber, limitNumber);
   }
 
   /**

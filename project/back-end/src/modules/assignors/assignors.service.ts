@@ -17,8 +17,8 @@ export class AssignorsService {
     const whereClause = search
       ? {
           OR: [
-            { name: { contains: search, mode: 'insensitive' } },
-            { document: { contains: search, mode: 'insensitive' } },
+            { name: { contains: search } },
+            { document: { contains: search } },
           ],
         }
       : {};

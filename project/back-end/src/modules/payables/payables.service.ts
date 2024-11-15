@@ -53,7 +53,7 @@ export class PayablesService {
     const whereClause = search
       ? {
           OR: [
-            { assignorId: { contains: search, mode: 'insensitive' } },
+            { assignorId: { contains: search } },
             { value: { equals: parseFloat(search) || undefined } },
           ],
         }

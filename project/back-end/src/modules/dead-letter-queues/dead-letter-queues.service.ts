@@ -16,9 +16,7 @@ export class DeadLetterQueuesService {
   }
 
   async findAll(search?: string, page: number = 1, limit: number = 10) {
-    const whereClause = search
-      ? { batchId: { contains: search, mode: 'insensitive' } }
-      : {};
+    const whereClause = search ? { batchId: { contains: search } } : {};
 
     const [deadLetterQueues, total] = await Promise.all([
       this.prisma.deadLetterQueue.findMany({

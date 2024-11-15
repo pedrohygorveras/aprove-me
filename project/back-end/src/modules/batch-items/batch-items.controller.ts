@@ -104,10 +104,13 @@ export class BatchItemsController {
   })
   findAll(
     @Query('batchId') batchId?: string,
-    @Query('page') page: number = 1,
-    @Query('limit') limit: number = 10,
+    @Query('page') page: string = '1',
+    @Query('limit') limit: string = '10',
   ) {
-    return this.batchItemsService.findAll(batchId, page, limit);
+    const pageNumber = parseInt(page, 10);
+    const limitNumber = parseInt(limit, 10);
+
+    return this.batchItemsService.findAll(batchId, pageNumber, limitNumber);
   }
 
   /**
