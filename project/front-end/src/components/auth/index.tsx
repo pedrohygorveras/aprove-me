@@ -35,6 +35,8 @@ const PrivateRoute: React.FC<iPrivateRoute> = ({ children }) => {
         const { refreshToken } = user;
         const result = await authService.refresh(refreshToken);
 
+        console.log(result);
+
         if (isMounted.current) {
           if (result.error) {
             setUser(null);

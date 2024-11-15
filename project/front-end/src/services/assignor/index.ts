@@ -11,7 +11,7 @@ class AssignorService {
     } = getUser();
 
     this.api = new Api();
-    this.accessToken = user.accessToken;
+    this.accessToken = user?.accessToken;
   }
 
   async createAssignor(
