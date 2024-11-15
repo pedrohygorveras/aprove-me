@@ -21,7 +21,7 @@ export class AuthController {
   @ApiOperation({
     summary: 'User login',
     description:
-      'Authenticate a user by providing a username and password. Returns a JWT token if the credentials are valid.',
+      'Authenticate a user by providing a login and password. Returns a JWT token if the credentials are valid.',
   })
   @ApiBody({
     description: 'The credentials required for login',
@@ -30,7 +30,7 @@ export class AuthController {
       example1: {
         summary: 'A typical login request',
         value: {
-          username: 'aprovame',
+          login: 'aprovame',
           password: 'aprovame',
         },
       },
@@ -53,7 +53,7 @@ export class AuthController {
   })
   @ApiResponse({
     status: 401,
-    description: 'Unauthorized - Invalid username or password',
+    description: 'Unauthorized - Invalid login or password',
     schema: {
       example: {
         statusCode: 401,
