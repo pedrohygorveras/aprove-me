@@ -10,4 +10,4 @@ RUN npx prisma generate --schema=./prisma/schema.prisma
 
 EXPOSE 5000
 
-CMD ["node", "dist/main.js"]
+CMD ["nest", "start"]
