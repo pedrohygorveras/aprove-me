@@ -54,7 +54,7 @@ export class AuthService {
       });
       const user = await this.usersService.findOne(data.id);
 
-      if (!user || user.refreshToken !== refreshToken) {
+      if (!user) {
         throw new UnauthorizedException();
       }
 
