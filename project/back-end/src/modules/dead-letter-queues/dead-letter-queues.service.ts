@@ -10,15 +10,14 @@ export class DeadLetterQueuesService {
   async create(createDeadLetterQueueDto: CreateDeadLetterQueueDto) {
     return this.prisma.deadLetterQueue.create({
       data: {
-        payableId: createDeadLetterQueueDto.payableId,
-        errorMessage: createDeadLetterQueueDto.errorMessage,
+        ...createDeadLetterQueueDto,
       },
     });
   }
 
   async findAll(search?: string, page: number = 1, limit: number = 10) {
     const whereClause = search
-      ? { payableId: { contains: search, mode: 'insensitive' } }
+      ? { batchId: { contains: search, mode: 'insensitive' } }
       : {};
 
     const [deadLetterQueues, total] = await Promise.all([
@@ -28,13 +27,6 @@ export class DeadLetterQueuesService {
         take: limit,
         orderBy: {
           createdAt: 'desc',
-        },
-        select: {
-          id: true,
-          payableId: true,
-          errorMessage: true,
-          createdAt: true,
-          updatedAt: true,
         },
       }),
       this.prisma.deadLetterQueue.count({ where: whereClause }),

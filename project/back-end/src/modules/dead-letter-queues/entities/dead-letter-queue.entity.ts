@@ -11,7 +11,22 @@ export class DeadLetterQueueEntity {
     description: 'UUID of the payable associated with this dead letter item',
     example: '123e4567-e89b-12d3-a456-426614174000',
   })
-  payableId: string;
+  batchId: string;
+
+  @ApiProperty({
+    description: 'UUID of the assignor associated with the payable',
+    example: '123e4567-e89b-12d3-a456-426614174000',
+  })
+  assignorId: string;
+
+  @ApiProperty({ description: 'Value of the payable', example: 1000.0 })
+  value: number;
+
+  @ApiProperty({
+    description: 'Emission date of the payable',
+    example: '2024-01-01T00:00:00Z',
+  })
+  emissionDate: Date;
 
   @ApiProperty({
     description: 'Error message associated with this dead letter item',

@@ -95,9 +95,11 @@ export class DeadLetterQueuesController {
         data: [
           {
             id: '1',
-            payableId: '1234-5678-9012-3456',
-            errorMessage:
-              'Failed to process the payable due to network timeout.',
+            batchId: '1234-5678-9012-3456',
+            assignorId: '123e4567-e89b-12d3-a456-426614174000',
+            value: 1000.0,
+            emissionDate: '2024-01-01T00:00:00Z',
+            errorMessage: 'Failed to process the batch due to network timeout.',
             createdAt: '2024-01-01T00:00:00Z',
             updatedAt: '2024-01-01T00:00:00Z',
           },
