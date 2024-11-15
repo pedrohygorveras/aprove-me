@@ -25,8 +25,8 @@ export class AuthService {
 
   async login(user: any) {
     const payload = {
-      id: user.id,
-      username: user.username,
+      name: user.name,
+      email: user.email,
       role: user.role,
     };
 
@@ -42,41 +42,39 @@ export class AuthService {
     return {
       accessToken: accessToken,
       refreshToken: refreshToken,
-      user: {
-        name: user.name,
-        email: user.email,
-        role: user.role,
-      },
+      user: payload,
     };
   }
 
   async refreshToken(refreshToken: string) {
     try {
-      const payload = this.jwtService.verify(refreshToken, {
+      const data = this.jwtService.verify(refreshToken, {
         secret: this.jwtSecret,
       });
-      const user = await this.usersService.findOne(payload.id);
+      const user = await this.usersService.findOne(data.id);
 
       if (!user || user.refreshToken !== refreshToken) {
         throw new UnauthorizedException();
       }
 
-      const newAccessToken = this.jwtService.sign(
-        {
-          id: user.id,
-          username: user.username,
-          role: user.role,
-        },
-        { expiresIn: this.accessTokenExpiration },
-      );
+      const payload = {
+        name: user.name,
+        email: user.email,
+        role: user.role,
+      };
+
+      const newAccessToken = this.jwtService.sign(payload, {
+        expiresIn: this.accessTokenExpiration,
+      });
+
+      const newRefreshToken = this.jwtService.sign(payload, {
+        expiresIn: this.refreshTokenExpiration,
+      });
 
       return {
         accessToken: newAccessToken,
-        user: {
-          name: user.name,
-          email: user.email,
-          role: user.role,
-        },
+        refreshToken: newRefreshToken,
+        user: payload,
       };
     } catch {
       throw new UnauthorizedException('Invalid refresh token');

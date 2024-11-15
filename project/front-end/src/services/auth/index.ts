@@ -1,26 +1,21 @@
-import { Api } from "../api";
+import Api from "@/services/api";
 
-class AuthService {
+class Auth {
   private api: Api;
 
   constructor() {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "";
-    this.api = new Api(baseUrl);
+    this.api = new Api();
   }
 
-  async login(login: string, password: string) {
-    return await this.api.request("/auth", {
-      method: "POST",
-      body: { login, password },
-    });
+  async login(username: string, password: string): Promise<any> {
+    const body = { username, password };
+    return this.api.request("/auth", "POST", body);
   }
 
-  async refreshToken(refreshToken: string) {
-    return await this.api.request("/auth/refresh", {
-      method: "POST",
-      body: { refreshToken },
-    });
+  async refresh(refreshToken: string): Promise<any> {
+    const body = { refreshToken };
+    return this.api.request("/auth/refresh", "POST", body);
   }
 }
 
-export const authService = new AuthService();
+export const authService = new Auth();

@@ -1,8 +1,5 @@
-"use client";
-
 import React from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { Link, useLocation } from "react-router-dom";
 
 interface ItemSidebarProps {
   item: {
@@ -14,20 +11,18 @@ interface ItemSidebarProps {
 }
 
 const ItemSidebar: React.FC<ItemSidebarProps> = ({ item }) => {
-  const pathname = usePathname();
-  const isActive = pathname.includes(item.link);
+  const location = useLocation();
+  const isActive = location.pathname.includes(item.link);
 
   return (
     <li>
       <Link
-        href={item.link}
-        passHref
-        className={`group relative flex flex-col items-center justify-center h-24 px-4 duration-300 ease-in-out border-b border-slate-800 
-          ${isActive ? "bg-primary" : "hover:bg-slate-800"}`}
+        to={item.link}
+        className={`group relative flex h-24 flex-col items-center justify-center border-b border-slate-800 px-4 duration-300 ease-in-out ${isActive ? "bg-primary" : "hover:bg-slate-800"}`}
       >
         <div>
           <div className="flex flex-col items-center text-3xl">{item.icon}</div>
-          <div className="text-xs mt-3">{item.label}</div>
+          <div className="mt-3 text-xs">{item.label}</div>
         </div>
       </Link>
     </li>

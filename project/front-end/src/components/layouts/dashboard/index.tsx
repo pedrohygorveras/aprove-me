@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useState } from "react";
 import { DashboardNavbar } from "@/components/navbar/dashboard";
 import { Sidebar } from "@/components/sidebar";
@@ -26,7 +24,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
         <div className="relative flex h-screen flex-1 flex-col overflow-x-hidden">
           <DashboardNavbar open={sidebarOpen} setOpen={setSidebarOpen} />
           <div className="flex h-screen flex-col overflow-hidden">
-            <div className="overflow-auto bg-core-100 text-letter">
+            <div className="bg-core-100 text-letter overflow-auto">
               <div className="min-h-[calc(100vh_-_80px)]">{children}</div>
             </div>
           </div>

@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  outline: none !important;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+  background: #dddddd;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #005eff;
+  border-radius: 30px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #dddddd;
+}
+
+@layer utilities {
+  .page {
+    @apply mx-auto;
+    @apply max-w-7xl;
+    @apply space-y-6;
+    @apply px-6;
+  }
+
+  .bg-auth {
+    background: linear-gradient(rgb(0, 0, 0, 0.45), rgba(0, 0, 0, 0.75)),
+      url("/bg-home.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+}

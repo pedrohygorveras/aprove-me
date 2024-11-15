@@ -1,44 +1,36 @@
-/* eslint-disable  @typescript-eslint/no-explicit-any */
-
-export class Api {
+export default class Api {
   private baseUrl: string;
+  private defaultHeaders: Record<string, string>;
 
-  constructor(baseUrl: string) {
-    if (!baseUrl) {
-      throw new Error("Base URL is required");
-    }
-    this.baseUrl = baseUrl;
+  constructor() {
+    this.baseUrl = import.meta.env.VITE_API_URL;
+    this.defaultHeaders = {
+      "Content-Type": "application/json",
+    };
   }
 
   async request(
-    endpoint: string,
-    options: {
-      method?: string;
-      headers?: Record<string, string>;
-      body?: any;
-    } = {}
-  ) {
-    const { method = "GET", headers = {}, body } = options;
-    const url = `${this.baseUrl}${endpoint}`;
+    url: string,
+    method: string,
+    body?: any,
+    additionalHeaders: Record<string, string> = {}
+  ): Promise<any> {
+    const headers = { ...this.defaultHeaders, ...additionalHeaders };
 
-    const response = await fetch(url, {
-      method,
-      headers: {
-        accept: "application/json",
-        "Content-Type": "application/json",
-        ...headers,
-      },
-      body: JSON.stringify({
-        username: "aprovame",
-        password: "aprovame",
-      }),
-    });
+    try {
+      const response = await fetch(this.baseUrl + url, {
+        method,
+        headers,
+        body: body ? JSON.stringify(body) : null,
+      });
 
-    if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.message || "Request failed");
+      if (!response.ok) {
+        return { error: true, statusCode: response?.status };
+      }
+
+      return await response.json();
+    } catch (error) {
+      throw error;
     }
-
-    return await response.json();
   }
 }

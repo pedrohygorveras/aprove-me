@@ -75,7 +75,13 @@ export class AuthController {
     description: 'The refresh token required to generate a new access token',
     schema: {
       example: {
+        raccessToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
         refreshToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
+        user: {
+          name: 'John Doe',
+          email: 'john.doe@example.com',
+          role: 'Admin',
+        },
       },
     },
   })

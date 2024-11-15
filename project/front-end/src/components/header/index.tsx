@@ -1,7 +1,7 @@
 import React from "react";
-import Link from "next/link";
 
 import { MdArrowBack } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 interface iHeaderProps {
   title: string;
@@ -22,12 +22,12 @@ const Header: React.FC<iHeaderProps> = ({
     <div className="border-b py-5">
       <div className="flex items-center">
         {goBack && (
-          <Link className="btn btn-circle btn-primary mr-4" href={goBack}>
+          <Link className="btn btn-circle btn-primary mr-4" to={goBack}>
             <MdArrowBack className="text-2xl" />
           </Link>
         )}
         <div>
-          <h1 className={`font-bold text-2xl text-primary ${className}`}>
+          <h1 className={`text-2xl font-bold text-primary ${className}`}>
             {title}
           </h1>
           {subtitle && (
@@ -35,8 +35,8 @@ const Header: React.FC<iHeaderProps> = ({
               <h2
                 className={
                   badge
-                    ? `font-normal text-sm ${className}`
-                    : `font-normal text-sm`
+                    ? `text-sm font-normal ${className}`
+                    : `text-sm font-normal`
                 }
               >
                 {subtitle}

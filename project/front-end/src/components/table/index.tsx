@@ -1,7 +1,5 @@
 /* eslint-disable  @typescript-eslint/no-explicit-any */
 
-"use client";
-
 import React, { useState } from "react";
 import { TableHeader } from "./header";
 import { TablePagination } from "./pagination";
@@ -29,7 +27,7 @@ const Table: React.FC<TableProps> = ({ columns, data, totalPages, Row }) => {
       <div className="">
         <TableSearch search={search} setSearch={setSearch} />
 
-        <div className="w flex justify-end md:min-w-[225px] mt-6 mb-8">
+        <div className="w mb-8 mt-6 flex justify-end md:min-w-[225px]">
           <TablePagination
             currentPage={currentPage}
             totalPages={totalPages}
@@ -39,7 +37,7 @@ const Table: React.FC<TableProps> = ({ columns, data, totalPages, Row }) => {
         </div>
       </div>
       <div className="overflow-x-auto">
-        <table className="table-auto w-full border">
+        <table className="w-full table-auto border">
           <TableHeader columns={columns} />
           <tbody>
             {data.map((row: any, index: number) => {
@@ -48,7 +46,7 @@ const Table: React.FC<TableProps> = ({ columns, data, totalPages, Row }) => {
           </tbody>
         </table>
       </div>
-      <div className="w flex justify-center md:min-w-[225px] mt-8">
+      <div className="w mt-8 flex justify-center md:min-w-[225px]">
         <TablePagination
           currentPage={currentPage}
           totalPages={totalPages}

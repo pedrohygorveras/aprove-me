@@ -1,5 +1,5 @@
 import React from "react";
-import Link from "next/link";
+import { Link } from "react-router-dom";
 
 interface iButtonProps {
   children: React.ReactNode;
@@ -22,7 +22,7 @@ const Button: React.FC<iButtonProps> = ({
 
   if (href) {
     return (
-      <Link href={href}>
+      <Link to={href}>
         <button
           type="button"
           className={`${baseClasses} ${disabled ? "opacity-50" : ""}`}

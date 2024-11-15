@@ -3,11 +3,14 @@
         "Bankme",
         "batchs",
         "Batchs",
+        "daisyui",
         "geist",
         "golevelup",
         "payables",
         "Payables",
         "rabbitmq",
-        "RABBITMQ"
+        "RABBITMQ",
+        "tailwindcss",
+        "toastify"
     ]
 }
