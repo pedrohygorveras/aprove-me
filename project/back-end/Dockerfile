@@ -1,13 +1,14 @@
-FROM node:20
-WORKDIR /app
-
+FROM node:18 AS builder
+WORKDIR /usr/src/app
 COPY package*.json ./
-RUN npm install --only=production
-
+RUN npm install --production=false
 COPY . .
+RUN npm run build
 
-RUN npx prisma generate --schema=./prisma/schema.prisma
-
+FROM node:18-alpine
+WORKDIR /usr/src/app
+COPY --from=builder /usr/src/app/dist ./dist
+COPY --from=builder /usr/src/app/package*.json ./
+RUN npm install --production
 EXPOSE 5000
-
-CMD ["nest", "start"]
+CMD ["node", "dist/main"]
