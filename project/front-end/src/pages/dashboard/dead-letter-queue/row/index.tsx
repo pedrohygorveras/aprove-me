@@ -16,16 +16,16 @@ export const TableRow: React.FC<{ row: any }> = ({ row }) => {
       </td>
       <td className="p-4 text-left">
         <button
-          className="btn btn-primary btn-sm mr-2"
+          className="w-full min-w-[80px] max-w-[80px] rounded-md px-4 py-[8px] text-xs"
           onClick={() => alert(`Editando ${row.id}`)}
         >
           Editar
         </button>
         <button
-          className="btn-danger btn btn-sm"
+          className="w-full min-w-[80px] max-w-[80px] rounded-md border border-red-600 bg-white px-4 py-[8px] text-xs"
           onClick={() => alert(`Excluindo ${row.id}`)}
         >
-          Excluir
+          <span className="text-red-600">Excluir</span>
         </button>
       </td>
     </tr>

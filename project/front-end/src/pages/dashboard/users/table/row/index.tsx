@@ -24,16 +24,16 @@ export const TableRow: React.FC<{ row: any }> = ({ row }) => {
         <td className="border px-2 py-2 text-center">
           <div className="flex flex-row items-center justify-center gap-1">
             <Button
-              className="w-20 min-w-20 px-4 py-1.5 text-xs"
+              className="w-full min-w-[80px] max-w-[80px] rounded-md px-4 py-[8px] text-xs"
               href={`/dashboard/users/add/${row.id}`}
             >
               Editar
             </Button>
             <Button
-              className="w-20 min-w-20 border border-red-600 bg-white px-4 py-1.5 text-xs text-red-600"
+              className="w-full min-w-[80px] max-w-[80px] rounded-md border border-red-600 bg-white px-4 py-[8px] text-xs"
               onClick={() => setIsModalOpen(true)}
             >
-              Excluir
+              <span className="text-red-600">Excluir</span>
             </Button>
           </div>
         </td>

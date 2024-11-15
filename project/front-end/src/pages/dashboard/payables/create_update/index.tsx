@@ -105,7 +105,7 @@ const PayableCreateOrUpdate: React.FC = () => {
   return (
     <DashboardLayout>
       <Content className="min-h-[calc(100vh_-_80px)]">
-        <Header title="Títulos a Pagar:" goBack="/dashboard/payables" />
+        <Header title="Pagamentos" goBack="/dashboard/payables" />
 
         <div className="py-8">
           <div className="w-full">

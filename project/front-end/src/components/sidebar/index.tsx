@@ -6,9 +6,10 @@ import {
   MdAttachMoney,
   MdApps,
   MdDeleteSweep,
-  MdOutlineSettings,
   MdFolderShared,
+  MdLogout,
 } from "react-icons/md";
+import { setUser } from "@/util/store";
 
 interface SidebarProps {
   open: boolean;
@@ -46,17 +47,17 @@ const menu: MenuProps[] = [
     link: "/dashboard/users",
     icon: <MdFolderShared />,
   },
-  {
-    label: "Configurações",
-    link: "/dashboard/settings",
-    icon: <MdOutlineSettings />,
-  },
 ];
+
+const logout = () => {
+  setUser(null);
+  window.location.href = "/login";
+};
 
 const Sidebar: React.FC<SidebarProps> = ({ open }) => {
   return (
     <aside
-      className={`bg-sidebar text-white absolute left-0 top-0 z-50 h-screen w-32 transition-transform duration-300 ease-in-out md:static overflow-auto md:translate-x-0 transform ${
+      className={`absolute left-0 top-0 z-50 h-screen w-32 transform overflow-auto bg-sidebar text-white transition-transform duration-300 ease-in-out md:static md:translate-x-0 ${
         open ? "absolute translate-x-0" : "-translate-x-full"
       }`}
     >
@@ -66,6 +67,19 @@ const Sidebar: React.FC<SidebarProps> = ({ open }) => {
             {menu.map((item: MenuProps, index: number) => {
               return <ItemSidebar item={item} index={index} key={item.label} />;
             })}
+            <li className="">
+              <button
+                onClick={logout}
+                className={`group relative flex h-24 w-full flex-col items-center justify-center border-b border-slate-800 px-4 duration-300 ease-in-out hover:bg-slate-800`}
+              >
+                <div>
+                  <div className="flex flex-col items-center text-3xl">
+                    <MdLogout />
+                  </div>
+                  <div className="mt-3 text-xs">Logout</div>
+                </div>
+              </button>
+            </li>
           </ul>
         </nav>
       </div>

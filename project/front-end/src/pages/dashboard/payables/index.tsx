@@ -70,7 +70,7 @@ const Payables: React.FC = () => {
         urlCreate={urlPayableCreate}
         batch={true}
       >
-        <Header title="Payables:" />
+        <Header title="Pagamentos:" />
 
         <div className="py-8">
           <TableSearch search={search} setSearch={setSearch} />

@@ -60,7 +60,7 @@ const Content: React.FC<ContentProps> = ({
         <div className="flex items-center justify-end space-x-3">
           {urlCreate && (
             <div className="text-right">
-              <Button href={urlCreate} className="min-w-24">
+              <Button href={urlCreate} className="min-w-[160px] max-w-[160px]">
                 <div className="flex items-center justify-center">
                   NOVO
                   <MdAdd className="ml-2 text-lg" />
@@ -72,9 +72,9 @@ const Content: React.FC<ContentProps> = ({
             <div className="text-right">
               <Button
                 onClick={() => setIsModalOpen(true)}
-                className="min-w-32 px-4"
+                className="min-w-[160px] max-w-[160px] px-4"
               >
-                <div className="flex items-center justify-center">
+                <div className="flex items-center justify-center text-nowrap">
                   LOTE DE DADOS
                   <MdAdd className="ml-2 text-lg" />
                 </div>

@@ -8,10 +8,8 @@ import { MdArrowForward } from "react-icons/md";
 import { Input } from "@/components/form/input";
 import { getErrorMessage } from "@/util/erros";
 import { setUser } from "@/util/store";
-import { useNavigate } from "react-router-dom";
 
 const Login: React.FC = () => {
-  const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState("");
 
   const onSubmit = async () => {
@@ -28,7 +26,7 @@ const Login: React.FC = () => {
       }
 
       setUser(result);
-      navigate("/dashboard/assignors", { replace: true });
+      window.location.href = "/dashboard/assignors";
     } catch (error: any) {
       setErrorMessage(getErrorMessage(error.statusCode));
     }

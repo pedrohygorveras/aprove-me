@@ -64,7 +64,7 @@ const Batches: React.FC = () => {
   return (
     <DashboardLayout>
       <Content className="min-h-[calc(100vh_-_80px)]">
-        <Header title="Batches:" />
+        <Header title="Lotes:" />
 
         <div className="py-8">
           <TableSearch search={search} setSearch={setSearch} />
