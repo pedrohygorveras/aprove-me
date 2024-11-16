@@ -1,1 +1,8 @@
-export const columns = ["Assignor ID", "Valor", "Data de Emissão", "Ações"];
+export const columns = [
+  "Assignor",
+  "Email",
+  "Documento",
+  "Valor",
+  "Data de Emissão",
+  "Ações",
+];

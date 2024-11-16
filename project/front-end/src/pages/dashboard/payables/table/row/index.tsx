@@ -18,10 +18,37 @@ export const TableRow: React.FC<{ row: any }> = ({ row }) => {
   return (
     <>
       <tr>
-        <td className="border px-2 py-2 text-center">{row.assignorId}</td>
-        <td className="border px-2 py-2 text-center">{row.value.toFixed(2)}</td>
         <td className="border px-2 py-2 text-center">
-          {new Date(row.emissionDate).toLocaleDateString()}
+          <div
+            className="tooltip tooltip-right max-w-[120px] cursor-pointer truncate"
+            title={row.assignor?.name}
+          >
+            {row.assignor?.name}
+          </div>
+        </td>
+        <td className="border px-2 py-2 text-center">
+          <div
+            className="tooltip tooltip-right max-w-[120px] cursor-pointer truncate"
+            title={row.assignor?.email}
+          >
+            {row.assignor?.email}
+          </div>
+        </td>
+        <td className="border px-2 py-2 text-center">
+          <div
+            className="tooltip tooltip-right max-w-[120px] cursor-pointer truncate"
+            title={row.assignor?.document}
+          >
+            {row.assignor?.document}
+          </div>
+        </td>
+        <td className="min-w-[100px] border px-2 py-2 text-center">
+          {row.value}
+        </td>
+        <td className="border px-2 py-2 text-center">
+          <div className="tooltip tooltip-right">
+            {new Date(row.emissionDate).toLocaleDateString()}
+          </div>
         </td>
         <td className="border px-2 py-2 text-center">
           <div className="flex flex-row items-center justify-center gap-1">
