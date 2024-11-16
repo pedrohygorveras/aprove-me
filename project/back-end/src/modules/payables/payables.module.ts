@@ -6,7 +6,6 @@ import { PrismaService } from '../../database/prisma.service';
 import { PayableProcessor } from './payable.processor';
 import { UsersService } from '../users/users.service';
 import { DeadLetterQueuesService } from '../dead-letter-queues/dead-letter-queues.service';
-import { EmailService } from './email.service';
 import { BatchsService } from '../batchs/batchs.service';
 
 @Module({
@@ -20,6 +19,7 @@ import { BatchsService } from '../batchs/batchs.service';
       ],
       uri: process.env.RABBITMQ_URI,
       connectionInitOptions: { wait: false },
+      prefetchCount: 1,
     }),
   ],
   controllers: [PayablesController],
@@ -28,7 +28,6 @@ import { BatchsService } from '../batchs/batchs.service';
     PrismaService,
     PayableProcessor,
     DeadLetterQueuesService,
-    EmailService,
     UsersService,
     BatchsService,
   ],

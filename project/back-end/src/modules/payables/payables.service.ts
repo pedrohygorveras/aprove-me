@@ -74,6 +74,14 @@ export class PayablesService {
           emissionDate: true,
           createdAt: true,
           updatedAt: true,
+          assignor: {
+            select: {
+              name: true,
+              email: true,
+              document: true,
+              phone: true,
+            },
+          },
         },
       }),
       this.prisma.payable.count({ where: whereClause }),
