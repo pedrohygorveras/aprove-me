@@ -1,7 +1,3 @@
-Claro, vou reformular todo o README incorporando as informações detalhadas sobre as funcionalidades, mantendo um tom claro e objetivo:
-
----
-
 # BankMe Receivables Management System
 
 ## 🌐 Links do Projeto
