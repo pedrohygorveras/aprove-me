@@ -13,8 +13,10 @@
 
 - **Painel RabbitMQ**: [Acesse o RabbitMQ Dashboard](https://rabbitmq.pedrobankme.ip-ddns.com)
   - **Credenciais**:
-    - **Usuário**: aproveme
-    - **Senha**: aproveme
+  ```
+    - Usuário: aprovame
+    - Senha: aprovame
+  ```
 
 ---
 

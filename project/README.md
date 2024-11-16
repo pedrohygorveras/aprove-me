@@ -9,8 +9,11 @@ Claro, vou reformular todo o README incorporando as informações detalhadas sob
 - **Aplicação Front-end**: [Acesse a aplicação aqui](https://pedrobankme.ip-ddns.com)
 
   - **Credenciais de acesso**:
-    - **Usuário**: aproveme
-    - **Senha**: aproveme
+
+  ```
+    - Usuário: aprovame
+    - Senha: aprovame
+  ```
 
 - **Documentação da API**: [Swagger](https://api.pedrobankme.ip-ddns.com/api/docs)
 
@@ -18,8 +21,10 @@ Claro, vou reformular todo o README incorporando as informações detalhadas sob
 
 - **Painel RabbitMQ**: [Acesse o RabbitMQ Dashboard](https://rabbitmq.pedrobankme.ip-ddns.com)
   - **Credenciais**:
-    - **Usuário**: aproveme
-    - **Senha**: aproveme
+  ```
+    - Usuário: aprovame
+    - Senha: aprovame
+  ```
 
 ### 📘 Leia Mais
 

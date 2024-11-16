@@ -6,8 +6,10 @@ Este é o **front-end** do sistema **Bankme Receivables Management**, que intera
 
 - **Aplicação Front-end**: [Acesse o Front-end](https://pedrobankme.ip-ddns.com)
   - **Primeiro acesso**:
-    - **Login**: aproveme
-    - **Senha**: aproveme
+  ```
+    - Usuário: aprovame
+    - Senha: aprovame
+  ```
 
 ---
 
