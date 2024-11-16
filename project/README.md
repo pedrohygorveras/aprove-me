@@ -32,7 +32,7 @@ Para informações detalhadas sobre a configuração, execução e detalhes téc
 
 ![Modelo de Banco de Dados](./back-end/doc/login.png)
 
-O **BankMe Receivables Management System** é uma solução para gerenciamento eficiente de recebíveis e cedentes. Ele foi desenvolvido para otimizar o fluxo financeiro, garantindo segurança, escalabilidade e automação.
+O **BankMe Receivables Management System** é uma solução para gerenciamento eficiente de recebíveis e cedentes.
 
 ### 🚀 Funcionalidades do Sistema
 
@@ -89,14 +89,12 @@ O projeto está dividido em duas partes principais para facilitar a manutenção
 
 ### 🧪 Testes
 
-Todos os testes unitários foram implementados, garantindo a qualidade e a confiabilidade das funcionalidades no projeto. Isso assegura que as operações principais do sistema funcionem conforme o esperado.
+Todos os testes unitários foram implementados.
 
 ### 🗃️ Modelo de Banco de Dados
-
-O modelo do banco de dados foi projetado para garantir que as relações entre recebíveis e cedentes sejam consistentes e eficientes. Confira o diagrama abaixo:
 
 ![Modelo de Banco de Dados](./back-end/doc/diagram.drawio.png)
 
 ---
 
-Este README foi elaborado para ajudá-lo a explorar e entender melhor o **BankMe Receivables Management System**. Com uma arquitetura modular e uma interface intuitiva, ele foi feito para facilitar o gerenciamento de recebíveis de maneira segura e eficiente. Consulte os **READMEs** específicos do front-end e do back-end para informações detalhadas de configuração e execução.
+Consulte os **READMEs** específicos do front-end e do back-end para informações detalhadas de configuração e execução.
